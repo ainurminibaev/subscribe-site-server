@@ -20,9 +20,9 @@
 
     <profiles>
         <profile>
-            <id>prod</id>
+            <id>ss-server</id>
             <properties>
-                <tomcatHome>/home/u_jb/activity/tomcat</tomcatHome>
+                <tomcatHome>/root/subscribe-site/tomcat</tomcatHome>
             </properties>
         </profile>
 
