@@ -8,11 +8,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import ru.jblab.subscribe.dto.EventFull;
+import ru.jblab.subscribe.dto.EventSimple;
+import ru.jblab.subscribe.form.FilterForm;
 import ru.jblab.subscribe.model.MasterClass;
 import ru.jblab.subscribe.model.UpdateTime;
 import ru.jblab.subscribe.repository.MasterClassRepository;
 import ru.jblab.subscribe.repository.UpdateTimeRepository;
 import ru.jblab.subscribe.service.MasterClassService;
+import ru.jblab.subscribe.util.Mappers;
+import ru.jblab.subscribe.util.Utils;
 import ru.jblab.subscribe.util.XlsUtil;
 
 import java.io.IOException;
@@ -20,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by ainurminibaev on 25.10.15.
@@ -36,6 +42,17 @@ public class MasterClassServiceImpl implements MasterClassService {
     @Override
     public List<MasterClass> findAll() {
         return Lists.newArrayList(masterClassRepository.findAll());
+    }
+
+    @Override
+    @Transactional
+    public List<EventSimple> filter(FilterForm filterForm) {
+        filterForm = Utils.fixForm(filterForm);
+        List<MasterClass> eventsFiltered = masterClassRepository.findEventsFiltered(filterForm);
+        return eventsFiltered
+                .stream()
+                .map(Mappers::mapEventToSimple)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -123,6 +140,11 @@ public class MasterClassServiceImpl implements MasterClassService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public EventFull findOne(Long id) {
+        return Mappers.mapEventToFull(masterClassRepository.findOne(id));
     }
 
     private void cleanRow(Row row) {

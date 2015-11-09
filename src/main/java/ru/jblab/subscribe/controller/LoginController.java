@@ -13,7 +13,7 @@ import ru.jblab.subscribe.model.User;
  */
 @Controller
 public class LoginController {
-    @RequestMapping(value = {"/login", "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String renderLogin(@RequestParam(required = false) String error, ModelMap map) {
         if (error != null) {
             map.addAttribute("error", true);
