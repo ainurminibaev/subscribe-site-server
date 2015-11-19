@@ -26,7 +26,7 @@
 
         <div class="event_wrap clearfix">
             <div class="event_img">
-                <img src="/resources/img/second.jpg" alt="third">
+                <img src="${event.img}" alt="third">
             </div>
             <div class="event_info">
                 <h2>${event.name}</h2>

@@ -17,14 +17,15 @@ public class Mappers {
 
     private static <T extends EventSimple> void mapSimple(MasterClass masterClass, T eventSimple) {
         eventSimple.setId(masterClass.getId());
-        eventSimple.setAlias("sdfsd");
-        eventSimple.setCost("8 455Р");
-        eventSimple.setForWhom("Юристы, Адвокаты");
-        eventSimple.setImg("/resources/img/first.jpg");
-        eventSimple.setName("Как защитить свои данные в суде после взлома");
-        eventSimple.setPlace("г. Москва, м. Курская, ул. Нижняя Сыромятническая, 4 этаж");
-        eventSimple.setWhen("18 сентября 2015 г., 10:00 – 17:00");
-        eventSimple.setType("Мастер-класс");
+        eventSimple.setAlias(Translit.toTranslit(masterClass.getName()));
+        eventSimple.setCost(masterClass.getCost() + "Р");
+        eventSimple.setForWhom(masterClass.getTargetGroup());
+        eventSimple.setImg(masterClass.getImg());
+        eventSimple.setName(masterClass.getName());
+        eventSimple.setPlace(masterClass.getLocation());
+//        eventSimple.setWhen("18 сентября 2015 г., 10:00 – 17:00");
+        eventSimple.setWhen(Utils.toRusString(masterClass.getStartDate()) + " - " + Utils.toRusString(masterClass.getEndDate()));
+        eventSimple.setType(masterClass.getType());
     }
 
     public static EventFull mapEventToFull(MasterClass masterClass) {
