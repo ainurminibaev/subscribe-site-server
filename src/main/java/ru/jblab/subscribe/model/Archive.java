@@ -21,7 +21,9 @@ public class Archive {
     @Column(name = "template_path")
     private String templatePath;
 
-    private ArrayType arrayType;
+    @Enumerated
+    @Column(name = "archive_type")
+    private ArrayType archiveType;
 
     public Long getId() {
         return id;
@@ -47,11 +49,11 @@ public class Archive {
         this.templatePath = templatePath;
     }
 
-    public ArrayType getArrayType() {
-        return arrayType;
+    public ArrayType getArchiveType() {
+        return archiveType;
     }
 
-    public void setArrayType(ArrayType arrayType) {
-        this.arrayType = arrayType;
+    public void setArchiveType(ArrayType archiveType) {
+        this.archiveType = archiveType;
     }
 }
