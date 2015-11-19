@@ -1,6 +1,7 @@
 package ru.jblab.subscribe.model;
 
-import javax.lang.model.type.ArrayType;
+import ru.jblab.subscribe.model.enums.ArchiveType;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,7 +24,7 @@ public class Archive {
 
     @Enumerated
     @Column(name = "archive_type")
-    private ArrayType archiveType;
+    private ArchiveType archiveType;
 
     public Long getId() {
         return id;
@@ -49,11 +50,11 @@ public class Archive {
         this.templatePath = templatePath;
     }
 
-    public ArrayType getArchiveType() {
+    public ArchiveType getArchiveType() {
         return archiveType;
     }
 
-    public void setArchiveType(ArrayType archiveType) {
+    public void setArchiveType(ArchiveType archiveType) {
         this.archiveType = archiveType;
     }
 }
