@@ -88,6 +88,12 @@ public class MasterClassServiceImpl implements MasterClassService {
                     continue;
                 }
                 cleanRow(row);
+                if (row.getCell(33) != null) {
+                    String validation = row.getCell(33).getStringCellValue();
+                    if (validation.equalsIgnoreCase("нет")) {
+                        continue;
+                    }
+                }
                 MasterClass masterClass = new MasterClass();
                 masterClass.setName(row.getCell(1).getStringCellValue());
                 masterClass.setType(row.getCell(2).getStringCellValue());
@@ -128,8 +134,14 @@ public class MasterClassServiceImpl implements MasterClassService {
                 masterClass.setImg(row.getCell(28).getStringCellValue());
                 masterClass.setInfoLink(row.getCell(29).getStringCellValue());
                 masterClass.setCompetences(row.getCell(30).getStringCellValue());
-                masterClass.setEventLink(row.getCell(31).getStringCellValue());
-                masterClass.setOrganazerPhone(row.getCell(32).getStringCellValue());
+                if (row.getCell(31) != null) {
+                    masterClass.setEventLink(row.getCell(31).getStringCellValue());
+                } else {
+                    masterClass.setEventLink("#");
+                }
+                if (row.getCell(32) != null) {
+                    masterClass.setOrganazerPhone(row.getCell(32).getStringCellValue());
+                }
                 masterClassRepository.save(masterClass);
             }
             if (row != null) {
