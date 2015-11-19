@@ -52,7 +52,7 @@ public class PagesController {
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
     public String archive(Model model) {
         model.addAttribute("archives", archiveService.findAll());
-        return "archive";
+        return "src";
     }
 
     @RequestMapping(value = "/archive/{id:[0-9]+}", method = RequestMethod.GET)
