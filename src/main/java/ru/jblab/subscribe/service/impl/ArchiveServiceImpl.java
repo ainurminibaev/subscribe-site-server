@@ -2,6 +2,7 @@ package ru.jblab.subscribe.service.impl;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.jblab.subscribe.model.Archive;
 import ru.jblab.subscribe.repository.ArchiveRepository;
 import ru.jblab.subscribe.service.ArchiveService;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by ainurminibaev on 19.11.15.
  */
+@Service
 public class ArchiveServiceImpl implements ArchiveService {
 
     @Autowired
