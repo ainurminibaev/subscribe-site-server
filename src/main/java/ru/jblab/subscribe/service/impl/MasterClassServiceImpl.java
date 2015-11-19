@@ -90,7 +90,7 @@ public class MasterClassServiceImpl implements MasterClassService {
                 cleanRow(row);
                 if (row.getCell(33) != null) {
                     String validation = row.getCell(33).getStringCellValue();
-                    if (validation.equalsIgnoreCase("нет")) {
+                    if (!validation.equalsIgnoreCase("да")) {
                         continue;
                     }
                 }
