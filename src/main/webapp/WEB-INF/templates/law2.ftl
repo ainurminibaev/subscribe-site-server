@@ -1,4 +1,5 @@
 <#include "parts/partners.ftl"/>
+<#include "parts/header.ftl"/>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -13,15 +14,7 @@
 <section id="info">
 
     <div class="wrapper clearfix">
-        <header class="header clearfix">
-            <a href="/" class="logo" tabindex="-1"><h1>Портал профессиональ-<br>ного развития юристов</h1></a>
-
-            <menu>
-                <li><a href="/archive" tabindex="-1">Архив рассылок</a></li>
-                <li><a href="#partners" tabindex="-1">Партнеры</a></li>
-                <li><a href="activities.html" tabindex="-1">Мероприятия</a></li>
-            </menu>
-        </header>
+        <@header/>
         <div class="header_info">
 
             <div class="info">
