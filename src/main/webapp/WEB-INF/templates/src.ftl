@@ -1,7 +1,9 @@
+<#include "parts/partners.ftl"/>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мероприятия - Портал профессионального развития юристов</title>
     <link rel="stylesheet" href="/resources/bower/select2/dist/css/select2.css">
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -48,16 +50,7 @@
 
     <div class="partners_wrap">
         <div class="wrapper">
-            <ul class="partners" id="partners">
-                <li><a href="#" tabindex="-1"><img src="/resources/img/1.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/2.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/3.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/4.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/5.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/6.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/7.jpg" alt="1"></a></li>
-            </ul>
-
+        <@partners/>
         </div>
     </div>
 

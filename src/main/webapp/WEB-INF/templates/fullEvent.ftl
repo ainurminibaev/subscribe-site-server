@@ -1,8 +1,11 @@
 <#-- @ftlvariable name="event" type="ru.jblab.subscribe.dto.EventFull"-->
+<#include "parts/partners.ftl"/>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Мероприятие - Портал профессионального развития юристов</title>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/full.css">
@@ -63,7 +66,7 @@
                         <td></td>
                         <td class="mail"><img src="/resources/img/mail.png" alt="mail">${event.organizerEmail}</td>
                         <td>
-                            <button class="btn go-btn">Хочу пойти</button>
+                            <button class="btn go-btn"><a href="${event.link!"#"}">Хочу пойти</a></button>
                         </td>
                     </tr>
                 </table>
@@ -107,6 +110,7 @@
                         <td>Транспортные расходы:</td>
                         <td>Оплачивает организатор</td>
                     </tr>
+                <button class="btn go-btn"><a href="${event.link!"#"}">Хочу пойти</a></button>
                 </table>
 
             </div>
@@ -116,22 +120,15 @@
 
     <div class="partners_wrap">
         <div class="wrapper">
-            <ul class="partners" id="partners">
-                <li><a href="#" tabindex="-1"><img src="/resources/img/1.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/2.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/3.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/4.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/5.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/6.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/7.jpg" alt="1"></a></li>
-            </ul>
+        <@partners/>
         </div>
     </div>
 
     <footer class="footer">
         <div id="quote-div" class="wrapper">
             <p>Mauris id condimentum justo. Suspendisse cursus finibus neque. Interdum et malesuada fames ac ante ipsum
-                primis in faucibus. Mauris porta eu lacus at ultricies. Quisque mattis gravida dolor, sit amet scelerisque
+                primis in faucibus. Mauris porta eu lacus at ultricies. Quisque mattis gravida dolor, sit amet
+                scelerisque
                 mauris facilisis non. Maecenas iaculis urna eu diam venenatis, molestie tempus volutpat.</p>
             <span>- Джордж Бернард Шоу</span>
         </div>
@@ -142,11 +139,14 @@
 <script src="/resources/js/smooth.js"></script>
 <script>
     ///блок дополнительная информация
-    $('.more').clickToggle(function () {
-        $('.more_info').show(0);
-    }, function () {
-        $('.more_info').hide(0);
-    });
+    if ($(window).width() >= 887) {
+        $('.more').clickToggle(function () {
+            $('.more_info').show(0);
+        }, function () {
+            $('.more_info').hide(0);
+        });
+    }
+
     //});
 </script>
 <script src="/resources/js/data_quotes.js"></script>

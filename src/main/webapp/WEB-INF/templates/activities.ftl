@@ -1,8 +1,10 @@
 <#include "parts/activities-list.ftl"/>
+<#include "parts/partners.ftl"/>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мероприятия - Портал профессионального развития юристов</title>
     <link rel="stylesheet" href="/resources/bower/select2/dist/css/select2.css">
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -26,13 +28,8 @@
             <h2>Мероприятия</h2>
 
             <div class="activities">
-
-                <div class="activities_block" id="activities_list">
-                <@activities_list activities/>
-                </div>
-
                 <div class="filter">
-                    <form id="filter-form">
+                    <form>
                         <p>Поиск по мероприятиям</p>
 
                         <div class="row">
@@ -98,9 +95,12 @@
                             </select></div>
 
 
-                        <button type="submit" name="submit" class="btn" id="find-btn">Найти</button>
+                        <button type="submit" name="submit" class="btn">Найти</button>
 
                     </form>
+                </div>
+                <div class="activities_block" id="activities_list">
+                <@activities_list activities/>
                 </div>
 
             </div>
@@ -111,16 +111,7 @@
 
     <div class="partners_wrap">
         <div class="wrapper">
-            <ul class="partners" id="partners">
-                <li><a href="#" tabindex="-1"><img src="/resources/img/1.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/2.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/3.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/4.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/5.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/6.jpg" alt="1"></a></li>
-                <li><a href="#" tabindex="-1"><img src="/resources/img/7.jpg" alt="1"></a></li>
-            </ul>
-
+        <@partners/>
         </div>
     </div>
 

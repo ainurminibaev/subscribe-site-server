@@ -1,6 +1,9 @@
 <#macro activities_list activities>
     <#list activities as event>
     <div class="event<#if event.expired> blocked</#if>">
+        <#if event.expired>
+            <span class="blocked_hide">Завершено</span>
+        </#if>
 
         <strong class="name">${event.name}</strong>
 
