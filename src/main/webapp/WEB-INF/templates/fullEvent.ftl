@@ -110,8 +110,8 @@
                         <td>Транспортные расходы:</td>
                         <td>Оплачивает организатор</td>
                     </tr>
-                <button class="btn go-btn"><a href="${event.link!"#"}">Хочу пойти</a></button>
                 </table>
+                <button class="btn go-btn"><a href="${event.link!"#"}">Хочу пойти</a></button>
 
             </div>
         </div>
