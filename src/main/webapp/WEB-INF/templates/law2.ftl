@@ -8,6 +8,8 @@
     <title>Поздравляем! - Портал профессионального развития юристов</title>
     <link rel="stylesheet" href="/resources/bower/select2/dist/css/select2.css">
     <link rel="stylesheet" href="/resources/css/index.css">
+    <script src="/resources/bower/jquery/dist/jquery.min.js"></script>
+    <script src="/resources/js/form_data_parse.js"></script>
 </head>
 <body>
 
@@ -71,10 +73,8 @@
 
                 <div id="work">
                     <div class="row">
-                        <select class="js-example-basic-single" style="width: 100%" id="city">
+                        <select class="js-example-basic-single js-cities" style="width: 100%" id="city">
                             <option></option>
-                            <option value="AL">Казань</option>
-                            <option value="WY">Москва</option>
                         </select>
                     </div>
 
@@ -84,9 +84,11 @@
 
                     <div class="row">
                         <select class="js-example-basic-single" style="width: 100%" id="xp">
-                            <option value="AL">0-5</option>
-                            <option value="WY">5-10</option>
-                            <option value="WY">10-15</option>
+                            <option value=""></option>
+                            <option value="05">0-5</option>
+                            <option value="510">5-10</option>
+                            <option value="1015">10-15</option>
+                            <option value="15">15 и более</option>
                         </select>
                     </div>
 
@@ -124,12 +126,17 @@
     <option value="{{=value}}">{{=value}}</option>
     {{~}}
 </script>
-<script src="/resources/bower/jquery/dist/jquery.min.js"></script>
+<script id="template_city" type="text/html">
+    {{~it:value:key}}
+    <option value="{{=value}}">{{=value}}</option>
+    {{~}}
+</script>
 <script src="/resources/bower/select2/dist/js/select2.full.min.js"></script>
+<script src="/resources/js/data_cities.js"></script>
 <script src="/resources/js/data_subscribs.js"></script>
 <script src="/resources/js/data_highSchool.js"></script>
-<script src="/resources/js/doT.js"></script>
 <script src="/resources/js/law2.js"></script>
+<script src="/resources/js/doT.js"></script>
 <script src="/resources/js/smooth.js"></script>
 <script src="/resources/js/data_quotes.js"></script>
 <script src="/resources/js/common.js"></script>

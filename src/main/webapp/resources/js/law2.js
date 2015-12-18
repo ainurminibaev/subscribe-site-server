@@ -1,23 +1,4 @@
 
-
-_data.formData = {};
-_data.subscribeTo = [];
-decodeURIComponent(location.search).replace(/^\?/,'').split('&').forEach(function(e){
-    var temp;
-    temp = e.split('=');
-    if(temp[0].indexOf('field_') == 0){
-        _data.formData[temp[0]] = temp[1];
-    }else if(temp[0].indexOf('d') == 0){
-        _data.subscribeTo.push(temp[0])
-    }
-});
-_data.subscribeTo.push('default');
-var username = [
-    ', ',
-    _data.formData.field_name_first,
-    _data.formData.field_name_mid
-].join(' ').replace(/\s{2,}/g,' ');
-if(username.length > 2) $('#userName').text(username);
 $(function(){
 
     //учусь/работаю
@@ -51,26 +32,29 @@ $(function(){
             $('#template_highSchool').text()
         )(_data.highSchool)
     );
-    ////selects
-    $(".js-example-basic-single").select2();
 
     $('.highSchool').select2({
-        placeholder: "ВУЗ",
-        minimumResultsForSearch: -1
+        placeholder: "ВУЗ"
     });
+
+    $('.js-cities').append(
+        doT.template(
+            $('#template_city').text()
+        )(_data.cities)
+    );
+    ////selects
+    $(".js-cities").select2();
 
     $('#highSchool').on('change',function(){
        $('#over').prop('disabled',false);
     });
 
     $('#start').select2({
-        placeholder: "Год поступления",
-        minimumResultsForSearch: -1
+        placeholder: "Год поступления"
     });
 
     $('.over').select2({
-        placeholder: "Год окончания",
-        minimumResultsForSearch: -1
+        placeholder: "Год окончания"
     });
 
 
@@ -80,6 +64,7 @@ $(function(){
     });
 
     $('#xp').select2({
+        placeholder: "Опыт работы",
         minimumResultsForSearch: -1
     });
 
