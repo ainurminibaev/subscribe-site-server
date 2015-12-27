@@ -5,32 +5,32 @@
             <span class="blocked_hide">Завершено</span>
         </#if>
 
-        <strong class="name">${event.name}</strong>
+        <strong class="name">${event.name!""}</strong>
 
         <div class="event_info">
 
-            <div class="event_img"><img src="${event.img}" alt="first"></div>
+            <div class="event_img"><img src="${event.img!"/resources/img/first.jpg"}" alt="first"></div>
             <div class="event_information">
                 <table>
                     <tr>
                         <td>Что:</td>
-                        <td>${event.type}</td>
+                        <td>${event.type!""}</td>
                     </tr>
                     <tr>
                         <td>Где:</td>
-                        <td>${event.place}</td>
+                        <td>${event.place!""}</td>
                     </tr>
                     <tr>
                         <td>Когда:</td>
-                        <td>${event.when}</td>
+                        <td>${event.when!""}</td>
                     </tr>
                     <tr>
                         <td>Для кого:</td>
-                        <td>${event.forWhom}</td>
+                        <td>${event.forWhom!""}</td>
                     </tr>
                     <tr>
                         <td>Стоимость:</td>
-                        <td>${event.cost}</td>
+                        <td>${event.cost!""}</td>
                     </tr>
                 </table>
             </div>

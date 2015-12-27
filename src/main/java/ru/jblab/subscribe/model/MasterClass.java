@@ -12,18 +12,23 @@ public class MasterClass {
     @GeneratedValue
     private Long id;
 
+    @Column(columnDefinition = "TEXT")
     private String name;
 
     private Long startDate;
 
     private Long endDate;
 
+    @Column(columnDefinition = "TEXT")
     private String type;
 
+    @Column(columnDefinition = "TEXT")
     private String form;
 
+    @Column(columnDefinition = "TEXT")
     private String shortDescr;
 
+    @Column(columnDefinition = "TEXT")
     private String organizerFIO;
 
     private String organizerEmail;
@@ -33,8 +38,9 @@ public class MasterClass {
     private String employment;
 
     private Long closeDate;
-
+    @Column(columnDefinition = "TEXT")
     private String location;
+
 
     private String checkExams;
 
@@ -46,34 +52,45 @@ public class MasterClass {
 
     private String eduLevel;
 
+    @Column(columnDefinition = "TEXT")
     private String targetGroup;
 
+    @Column(columnDefinition = "TEXT")
     private String countConstraint;
 
+    @Column(columnDefinition = "TEXT")
     private String completionDoc;
 
+    @Column(columnDefinition = "TEXT")
     private String additionalReq;
 
     private String marks;
 
     private String status;
 
+    @Column(columnDefinition = "TEXT")
     private String whoFill;
 
+    @Column(columnDefinition = "TEXT")
     private String living;
 
     private String eating;
 
     private String car;
 
+    @Column(columnDefinition = "TEXT")
     private String channel;
 
+    @Column(columnDefinition = "TEXT")
     private String img;
 
+    @Column(columnDefinition = "TEXT")
     private String infoLink;
 
+    @Column(columnDefinition = "TEXT")
     private String competences;
 
+    @Column(columnDefinition = "TEXT")
     private String eventLink;
 
     public Long getId() {

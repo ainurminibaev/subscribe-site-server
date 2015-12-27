@@ -22,9 +22,8 @@ import ru.jblab.subscribe.util.XlsUtil;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -95,14 +94,14 @@ public class MasterClassServiceImpl implements MasterClassService {
                     }
                 }
                 MasterClass masterClass = new MasterClass();
-                masterClass.setName(row.getCell(1).getStringCellValue());
-                masterClass.setType(row.getCell(2).getStringCellValue());
-                masterClass.setForm(row.getCell(3).getStringCellValue());
-                masterClass.setShortDescr(row.getCell(4).getStringCellValue());
-                masterClass.setOrganizerFIO(row.getCell(5).getStringCellValue());
-                masterClass.setOrganizerEmail(row.getCell(6).getStringCellValue());
-                masterClass.setOrganizerEmail(row.getCell(6).getStringCellValue());
-                Date startDate = row.getCell(7).getDateCellValue();
+                Function<Cell, String> str = this::cellToStr;
+                masterClass.setName(Optional.ofNullable(row.getCell(1)).map(str).orElse(null));
+                masterClass.setType(Optional.ofNullable(row.getCell(2)).map(str).orElse(null));
+                masterClass.setForm(Optional.ofNullable(row.getCell(3)).map(str).orElse(null));
+                masterClass.setShortDescr(Optional.ofNullable(row.getCell(4)).map(str).orElse(null));
+                masterClass.setOrganizerFIO(Optional.ofNullable(row.getCell(5)).map(str).orElse(null));
+                masterClass.setOrganizerEmail(Optional.ofNullable(row.getCell(6)).map(str).orElse(null));
+                Date startDate = Optional.ofNullable(row.getCell(7)).map(Cell::getDateCellValue).orElse(null);
                 if (startDate != null) {
                     masterClass.setStartDate(startDate.getTime());
                 }
@@ -110,30 +109,30 @@ public class MasterClassServiceImpl implements MasterClassService {
                 if (endDate != null) {
                     masterClass.setEndDate(endDate.getTime());
                 }
-                masterClass.setEmployment(row.getCell(9).getStringCellValue());
-                Date closeDate = row.getCell(10).getDateCellValue();
-                if (endDate != null) {
+                masterClass.setEmployment(Optional.ofNullable(row.getCell(9)).map(str).orElse(null));
+                Date closeDate = Optional.ofNullable(row.getCell(10)).map(Cell::getDateCellValue).orElse(null);
+                if (closeDate != null) {
                     masterClass.setCloseDate(closeDate.getTime());
                 }
-                masterClass.setLocation(row.getCell(11).getStringCellValue());
-                masterClass.setCheckExams(row.getCell(12).getStringCellValue());
-                masterClass.setPassExams(row.getCell(13).getStringCellValue());
-                masterClass.setCost(row.getCell(14).getStringCellValue());
-                masterClass.setAge(row.getCell(15).getStringCellValue());
-                masterClass.setEduLevel(row.getCell(16).getStringCellValue());
-                masterClass.setTargetGroup(row.getCell(17).getStringCellValue());
-                masterClass.setCountConstraint(row.getCell(18).getStringCellValue());
-                masterClass.setCompletionDoc(row.getCell(19).getStringCellValue());
-                masterClass.setAdditionalReq(row.getCell(20).getStringCellValue());
-                masterClass.setMarks(row.getCell(21).getStringCellValue());
-                masterClass.setWhoFill(row.getCell(23).getStringCellValue());
-                masterClass.setLiving(row.getCell(24).getStringCellValue());
-                masterClass.setEating(row.getCell(25).getStringCellValue());
-                masterClass.setCar(row.getCell(26).getStringCellValue());
-                masterClass.setChannel(row.getCell(27).getStringCellValue());
-                masterClass.setImg(row.getCell(28).getStringCellValue());
-                masterClass.setInfoLink(row.getCell(29).getStringCellValue());
-                masterClass.setCompetences(row.getCell(30).getStringCellValue());
+                masterClass.setLocation(Optional.ofNullable(row.getCell(11)).map(str).orElse(null));
+                masterClass.setCheckExams(Optional.ofNullable(row.getCell(12)).map(str).orElse(null));
+                masterClass.setPassExams(Optional.ofNullable(row.getCell(13)).map(str).orElse(null));
+                masterClass.setCost(Optional.ofNullable(row.getCell(14)).map(str).orElse(null));
+                masterClass.setAge(Optional.ofNullable(row.getCell(15)).map(str).orElse(null));
+                masterClass.setEduLevel(Optional.ofNullable(row.getCell(16)).map(str).orElse(null));
+                masterClass.setTargetGroup(Optional.ofNullable(row.getCell(17)).map(str).orElse(null));
+                masterClass.setCountConstraint(Optional.ofNullable(row.getCell(18)).map(str).orElse(null));
+                masterClass.setCompletionDoc(Optional.ofNullable(row.getCell(19)).map(str).orElse(null));
+                masterClass.setAdditionalReq(Optional.ofNullable(row.getCell(20)).map(str).orElse(null));
+                masterClass.setMarks(Optional.ofNullable(row.getCell(21)).map(str).orElse(null));
+                masterClass.setWhoFill(Optional.ofNullable(row.getCell(23)).map(str).orElse(null));
+                masterClass.setLiving(Optional.ofNullable(row.getCell(24)).map(str).orElse(null));
+                masterClass.setEating(Optional.ofNullable(row.getCell(25)).map(str).orElse(null));
+                masterClass.setCar(Optional.ofNullable(row.getCell(26)).map(str).orElse(null));
+                masterClass.setChannel(Optional.ofNullable(row.getCell(27)).map(str).orElse(null));
+                masterClass.setImg(Optional.ofNullable(row.getCell(28)).map(str).orElse(null));
+                masterClass.setInfoLink(Optional.ofNullable(row.getCell(29)).map(str).orElse(null));
+                masterClass.setCompetences(Optional.ofNullable(row.getCell(30)).map(str).orElse(null));
                 if (row.getCell(31) != null) {
                     masterClass.setEventLink(row.getCell(31).getStringCellValue());
                 } else {
@@ -157,6 +156,29 @@ public class MasterClassServiceImpl implements MasterClassService {
     @Override
     public EventFull findOne(Long id) {
         return Mappers.mapEventToFull(masterClassRepository.findOne(id));
+    }
+
+    private String cellToStr(Cell cell) {
+        try {
+            switch (cell.getCellType()) {
+                case Cell.CELL_TYPE_STRING:
+                    return cell.getRichStringCellValue().getString();
+                case Cell.CELL_TYPE_NUMERIC:
+                    if (DateUtil.isCellDateFormatted(cell)) {
+                        return cell.getDateCellValue().toString();
+                    } else {
+                        return Double.valueOf(cell.getNumericCellValue()).toString();
+                    }
+                case Cell.CELL_TYPE_BOOLEAN:
+                    return Boolean.valueOf(cell.getBooleanCellValue()).toString();
+                case Cell.CELL_TYPE_FORMULA:
+                    return cell.getCellFormula();
+                default:
+                    return null;
+            }
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     private void cleanRow(Row row) {
