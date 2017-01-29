@@ -25,4 +25,5 @@
 <li><a href="/archive" tabindex="-1">Архив рассылок</a></li>
 <li><a href="#partners" tabindex="-1">Партнеры</a></li>
 <li><a href="/activities" tabindex="-1">Мероприятия</a></li>
+<li><a href="http://вакансии.юркарьера.рф" target="_blank" tabindex="-1">Мероприятия</a></li>
 </#macro>
